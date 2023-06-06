@@ -17,7 +17,7 @@ const props = defineProps(["title", "open", "closeModal"])
       <div class="flex items-center justify-between h-16 px-5 border-b">
         <!-- close icon -->
         <BaseIconButton
-          bg="bg-gray-100 text-black"
+          bg="bg-gray-100 !text-black"
           ring="ring-gray-100/50"
           @click="closeModal()"
         >

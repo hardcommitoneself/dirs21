@@ -15,14 +15,6 @@ const routes = [
     },
   },
   {
-    path: "/dishes/:id",
-    name: "Dish Detail",
-    component: () => import("@/views/Dishes/Detail.vue"),
-    meta: {
-      layout: AppLayout,
-    },
-  },
-  {
     path: "/dishes/create",
     name: "Create Dish",
     component: () => import("@/views/Dishes/Create.vue"),

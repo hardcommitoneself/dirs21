@@ -17,12 +17,12 @@ const props = defineProps(["dish"])
   <div class="flex flex-col">
     <!-- top -->
     <div
-      class="relative w-full h-full overflow-hidden shadow-inner cursor-pointer rounded-xl group"
+      class="relative w-full h-full overflow-hidden shadow-inner cursor-pointer aspect-square rounded-xl group"
     >
       <img
         :src="dish.images.md"
         :alt="dish.name"
-        class="w-full transition group-hover:scale-110"
+        class="w-full h-full transition group-hover:scale-110"
       />
 
       <!-- actions -->

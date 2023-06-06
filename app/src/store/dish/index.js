@@ -42,9 +42,9 @@ export const useDishStore = defineStore("dish", {
           )
 
           this.dishes.splice(dishIndex, 1)
-          this.currentDeleteDishId = null
-          this.openDeleteModal = false
         }
+        this.currentDeleteDishId = null
+        this.openDeleteModal = false
         this.loading = false
       } catch (error) {
         this.loading = false
