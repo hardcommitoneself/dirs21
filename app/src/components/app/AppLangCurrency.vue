@@ -6,12 +6,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import SVGGlobal from "../svg/SVGGlobal.vue"
-
-export default {
-  components: {
-    SVGGlobal,
-  },
-}
 </script>

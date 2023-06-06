@@ -1,7 +1,7 @@
 <template>
   <!-- footer -->
   <footer
-    class="fixed bottom-0 flex items-center justify-between w-screen h-12 px-10 mx-auto text-sm border-t max-w-screen-2xl"
+    class="fixed bottom-0 flex items-center justify-between w-screen h-12 px-10 mx-auto text-sm bg-white border-t max-w-screen-2xl"
   >
     <AppCopyright />
 
@@ -16,14 +16,7 @@
   </footer>
 </template>
 
-<script>
+<script setup>
 import AppCopyright from "./app/AppCopyright.vue"
 import SVGGlobal from "./svg/SVGGlobal.vue"
-
-export default {
-  components: {
-    AppCopyright,
-    SVGGlobal,
-  },
-}
 </script>

@@ -20,12 +20,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import SVGSearch from "../svg/SVGSearch.vue"
-
-export default {
-  components: {
-    SVGSearch,
-  },
-}
 </script>

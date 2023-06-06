@@ -1,7 +1,7 @@
 <template>
   <!-- header -->
   <header
-    class="flex items-center justify-between h-20 px-10 mx-auto border-b max-w-screen-2xl"
+    class="fixed top-0 flex items-center justify-between w-screen h-20 px-10 mx-auto bg-white border-b max-w-screen-2xl"
   >
     <!-- logo -->
     <AppLogo />
@@ -12,16 +12,8 @@
   </header>
 </template>
 
-<script>
+<script setup>
 import AppLogo from "./app/AppLogo.vue"
 import AppGlobalSearch from "./app/AppGlobalSearch.vue"
 import AppLangCurrency from "./app/AppLangCurrency.vue"
-
-export default {
-  components: {
-    AppLogo,
-    AppGlobalSearch,
-    AppLangCurrency,
-  },
-}
 </script>
