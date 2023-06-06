@@ -1,14 +1,18 @@
 <template>
   <!-- header -->
   <header
-    class="fixed top-0 flex items-center justify-between w-screen h-20 px-10 mx-auto bg-white border-b max-w-screen-2xl"
+    class="fixed top-0 z-50 w-screen h-20 px-10 bg-white border-b shadow-md"
   >
-    <!-- logo -->
-    <AppLogo />
-    <!-- global search -->
-    <AppGlobalSearch />
-    <!-- language & currency -->
-    <AppLangCurrency />
+    <div
+      class="flex items-center justify-between h-full mx-auto max-w-screen-2xl"
+    >
+      <!-- logo -->
+      <AppLogo />
+      <!-- global search -->
+      <AppGlobalSearch />
+      <!-- language & currency -->
+      <AppLangCurrency />
+    </div>
   </header>
 </template>
 

@@ -5,6 +5,7 @@ export const useDishStore = defineStore("dish", {
   state: () => ({
     dishes: [],
     loading: false,
+    error: null,
   }),
   actions: {
     /**
@@ -21,6 +22,7 @@ export const useDishStore = defineStore("dish", {
       } catch (error) {
         this.dishes = []
         this.loading = false
+        this.error = error
       }
     },
   },
