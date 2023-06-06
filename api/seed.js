@@ -38,6 +38,8 @@ const randomDish = () => {
         height: 128,
       }),
     },
+    time: faker.helpers.arrayElement(["Breakfast", "Lunch", "Dinner"]),
+    day: faker.helpers.arrayElement(["Weekdays", "Weekends"]),
     stock: faker.number.int(10),
     active: true,
     readyIn: faker.number.int(50),
