@@ -1,3 +1,7 @@
+<script setup>
+import DishEditForm from "../../components/dish/DishEditForm.vue"
+</script>
+
 <template>
-    <!-- create dish view -->
+  <DishEditForm :is-editing="false" :dish="null" />
 </template>

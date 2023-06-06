@@ -27,6 +27,19 @@ export const findOne = async (id) => {
 }
 
 /**
+ * Create new dish
+ */
+export const createOne = async (payload) => {
+  try {
+    const response = await axios.put("/dishes", payload)
+
+    return response.data.data
+  } catch (error) {
+    throw error
+  }
+}
+
+/**
  * Update dish
  */
 export const updateDish = async (payload) => {

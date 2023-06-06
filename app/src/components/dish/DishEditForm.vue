@@ -12,7 +12,19 @@ const dishStore = useDishStore()
 
 const data = computed(() =>
   props.dish === null
-    ? null
+    ? {
+        name: "",
+        description: "",
+        price: 0,
+        starter: "",
+        main: "",
+        dessert: "",
+        beverage: "",
+        time: "Breakfast",
+        day: "Weekdays",
+        stock: 0,
+        readyIn: 0,
+      }
     : {
         name: props.dish.name,
         description: props.dish.description,
@@ -29,12 +41,18 @@ const data = computed(() =>
 )
 
 const castNumber = (node) => {
-  node.hook.input((value, next) => next(Number(value)))
+  node.hook.input((value, next) =>
+    next(isNaN(Number(value)) ? 0 : Number(value))
+  )
 }
 
 const handleClickSubmit = () => {
   const node = dishEditForm.value.node
   node.submit()
+}
+
+const handleClickCancel = () => {
+  router.push("/dishes")
 }
 
 const onSubmit = async (data) => {
@@ -48,21 +66,24 @@ const onSubmit = async (data) => {
       dessert: data.dessert.length ? data.dessert.split(",") : [],
       beverage: data.beverage.length ? data.beverage.split(",") : [],
     },
-    images: props.dish.images,
     time: data.time,
     day: data.day,
     stock: data.stock,
-    active: props.dish.active,
+    active: true,
     readyIn: data.readyIn,
-    _Created: props.dish._Created,
-    _Changed: props.dish._Changed,
   }
 
   if (props.isEditing) {
     payload._id = props.dish._id
-  }
+    payload.images = props.dish.images
+    payload.active = props.dish.active
+    payload._Created = props.dish._Created
+    payload._Changed = props.dish._Changed
 
-  await dishStore.updateDish(payload)
+    await dishStore.updateDish(payload)
+  } else {
+    await dishStore.createOne(payload)
+  }
   router.push("/dishes")
 }
 </script>
@@ -81,7 +102,7 @@ const onSubmit = async (data) => {
     <div class="flex flex-col items-center max-w-2xl p-10 mx-auto space-y-4">
       <!-- title -->
       <h3 class="text-3xl font-bold">
-        {{ isEditing ? "Edit" : "Create new" }} Dish
+        {{ isEditing ? "Edit" : "Create New" }} Dish
       </h3>
       <div class="flex flex-col space-y-4 w-96">
         <FormKit
@@ -111,7 +132,7 @@ const onSubmit = async (data) => {
           placeholder="Type dish price..."
           value=""
           help="Dish price"
-          validation="required"
+          validation="required|min:1"
           :plugins="[castNumber]"
         />
 
@@ -180,16 +201,16 @@ const onSubmit = async (data) => {
           name="readyIn"
           placeholder="Type ready time in minute..."
           help="Ready in?"
-          validation="required"
+          validation="required|min:1"
           :plugins="[castNumber]"
         />
 
         <div class="flex justify-end space-x-4">
           <BaseButton @click="handleClickSubmit">
-            {{ isEditing ? "Save" : "Edit" }}
+            {{ isEditing ? "Save" : "Create" }}
           </BaseButton>
 
-          <BaseButton> Cancel</BaseButton>
+          <BaseButton @click="handleClickCancel"> Cancel</BaseButton>
         </div>
       </div>
     </div>

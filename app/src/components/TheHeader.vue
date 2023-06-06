@@ -1,7 +1,12 @@
 <script setup>
+import { useRoute } from "vue-router"
 import AppLogo from "@/components/app/AppLogo.vue"
 import AppGlobalSearch from "@/components/app/AppGlobalSearch.vue"
 import AppLangCurrency from "@/components/app/AppLangCurrency.vue"
+import BaseIconButton from "@/components/base/BaseIconButton.vue"
+import SVGPlus from "@/components/svg/SVGPlus.vue"
+
+const route = useRoute()
 </script>
 
 <template>
@@ -17,7 +22,18 @@ import AppLangCurrency from "@/components/app/AppLangCurrency.vue"
       <!-- global search -->
       <AppGlobalSearch />
       <!-- language & currency -->
-      <AppLangCurrency />
+      <div class="flex items-center space-x-4">
+        <router-link
+          v-if="!route.path.includes('create')"
+          to="/dishes/create"
+          class="animate-bounce"
+        >
+          <BaseIconButton bg="bg-teal-500" ring="ring-teal-500/50">
+            <SVGPlus />
+          </BaseIconButton>
+        </router-link>
+        <AppLangCurrency />
+      </div>
     </div>
   </header>
 </template>

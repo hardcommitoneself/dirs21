@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 const cors = require("cors");
+const { faker } = require("@faker-js/faker");
 const app = express();
 const port = 9000;
 const { uuid } = require("uuidv4");
@@ -57,6 +58,23 @@ router.put("/dishes", (req, res) => {
     if (!dish._id) {
       //
       dish._id = uuid();
+      dish.images = {
+        lg: faker.image.urlLoremFlickr({
+          category: "food",
+          width: 560,
+          height: 560,
+        }),
+        md: faker.image.urlLoremFlickr({
+          category: "food",
+          width: 240,
+          height: 240,
+        }),
+        sm: faker.image.urlLoremFlickr({
+          category: "food",
+          width: 128,
+          height: 128,
+        }),
+      };
       dish._Created = new Date();
       dish._Changed = null;
 

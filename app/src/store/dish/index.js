@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { findAll, findOne, updateDish, deleteOne } from "@/services"
+import { findAll, findOne, updateDish, createOne, deleteOne } from "@/services"
 
 export const useDishStore = defineStore("dish", {
   state: () => ({
@@ -41,6 +41,22 @@ export const useDishStore = defineStore("dish", {
         this.loading = false
       } catch (error) {
         this.dish = null
+        this.loading = false
+        this.error = error
+      }
+    },
+    /**
+     * Create new dish
+     */
+    async createOne(payload) {
+      try {
+        this.loading = true
+
+        const dish = await createOne(payload)
+
+        this.dishes.push(dish)
+        this.loading = false
+      } catch (error) {
         this.loading = false
         this.error = error
       }
