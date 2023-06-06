@@ -1,5 +1,5 @@
 <script setup>
-import DishEditForm from "../../components/dish/DishEditForm.vue"
+import DishEditForm from "@/components/dish/DishEditForm.vue"
 </script>
 
 <template>

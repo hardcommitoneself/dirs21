@@ -1,5 +1,5 @@
 <script setup>
-import SVGGlobal from "../svg/SVGGlobal.vue"
+import SVGGlobal from "@/components/svg/SVGGlobal.vue"
 </script>
 
 <template>

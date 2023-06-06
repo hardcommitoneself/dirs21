@@ -1,10 +1,10 @@
 <script setup>
-import { storeToRefs } from "pinia"
-import { useRoute } from "vue-router"
-import DishEditForm from "../../components/dish/DishEditForm.vue"
-import BaseLoading from "../../components/base/BaseLoading.vue"
-import { useDishStore } from "../../store"
 import { onMounted } from "vue"
+import { useRoute } from "vue-router"
+import { storeToRefs } from "pinia"
+import { useDishStore } from "@/store"
+import DishEditForm from "@/components/dish/DishEditForm.vue"
+import BaseLoading from "@/components/base/BaseLoading.vue"
 
 const route = useRoute()
 const dishStore = useDishStore()

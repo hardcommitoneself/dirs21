@@ -1,8 +1,8 @@
 <script setup>
 import { ref, computed } from "vue"
 import { useRouter } from "vue-router"
+import { useDishStore } from "@/store"
 import BaseButton from "@/components/base/BaseButton.vue"
-import { useDishStore } from "../../store"
 
 const props = defineProps(["isEditing", "dish"])
 

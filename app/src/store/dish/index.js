@@ -9,6 +9,7 @@ export const useDishStore = defineStore("dish", {
     openDeleteModal: false,
     loading: false,
     error: null,
+    search: "",
   }),
   actions: {
     /**
@@ -118,5 +119,16 @@ export const useDishStore = defineStore("dish", {
     closeDeleteModal() {
       this.openDeleteModal = false
     },
+  },
+  getters: {
+    searchResultDishes: (state) =>
+      state.dishes.filter((dish) =>
+        dish.name?.toLowerCase().includes(state.search.toLocaleLowerCase())
+      ),
+
+    total: (state) =>
+      state.dishes.filter((dish) =>
+        dish.name?.toLowerCase().includes(state.search.toLocaleLowerCase())
+      ).length,
   },
 })

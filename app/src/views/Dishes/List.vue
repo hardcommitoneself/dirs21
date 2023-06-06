@@ -1,15 +1,16 @@
 <script setup>
 import { storeToRefs } from "pinia"
+import { useDishStore } from "@/store"
 import DishList from "@/components/dish/DishList.vue"
 import DishListItem from "@/components/dish/DishListItem.vue"
 import BaseLoading from "@/components/base/BaseLoading.vue"
 import BaseModal from "@/components/base/BaseModal.vue"
 import BaseButton from "@/components/base/BaseButton.vue"
-import { useDishStore } from "../../store"
 
 const dishStore = useDishStore()
 
-const { dishes, loading, openDeleteModal } = storeToRefs(dishStore)
+const { loading, openDeleteModal, searchResultDishes, total } =
+  storeToRefs(dishStore)
 </script>
 
 <template>
@@ -17,8 +18,15 @@ const { dishes, loading, openDeleteModal } = storeToRefs(dishStore)
   <div class="p-5">
     <BaseLoading v-if="loading" />
     <DishList v-else>
-      <DishListItem v-for="dish in dishes" :key="dish._id" :dish="dish" />
+      <DishListItem
+        v-for="dish in searchResultDishes"
+        :key="dish._id"
+        :dish="dish"
+      />
     </DishList>
+    <div v-if="total == 0" class="flex items-center justify-center">
+      No Dishes...
+    </div>
   </div>
 
   <!-- delete confirmation modal -->

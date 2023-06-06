@@ -1,6 +1,6 @@
 <script setup>
-import SVGXMark from "@/components/svg/SVGXMark.vue"
 import BaseIconButton from "@/components/base/BaseIconButton.vue"
+import SVGXMark from "@/components/svg/SVGXMark.vue"
 
 const props = defineProps(["title", "open", "closeModal"])
 </script>

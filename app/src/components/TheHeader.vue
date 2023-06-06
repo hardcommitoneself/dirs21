@@ -1,12 +1,17 @@
 <script setup>
+import { computed } from "vue"
 import { useRoute } from "vue-router"
 import AppLogo from "@/components/app/AppLogo.vue"
 import AppGlobalSearch from "@/components/app/AppGlobalSearch.vue"
 import AppLangCurrency from "@/components/app/AppLangCurrency.vue"
 import BaseIconButton from "@/components/base/BaseIconButton.vue"
 import SVGPlus from "@/components/svg/SVGPlus.vue"
+import SVGArrowLeft from "@/components/svg/SVGArrowLeft.vue"
 
 const route = useRoute()
+
+const isEditPage = computed(() => route.path.includes("edit"))
+const isCreatePage = computed(() => route.path.includes("create"))
 </script>
 
 <template>
@@ -20,11 +25,11 @@ const route = useRoute()
       <!-- logo -->
       <AppLogo />
       <!-- global search -->
-      <AppGlobalSearch />
+      <AppGlobalSearch v-if="!isCreatePage && !isEditPage" />
       <!-- language & currency -->
       <div class="flex items-center space-x-4">
         <router-link
-          v-if="!route.path.includes('create')"
+          v-if="!isCreatePage && !isEditPage"
           to="/dishes/create"
           class="animate-bounce"
         >
@@ -32,6 +37,17 @@ const route = useRoute()
             <SVGPlus />
           </BaseIconButton>
         </router-link>
+
+        <router-link
+          v-if="isCreatePage || isEditPage"
+          to="/dishes"
+          class="animate-bounce"
+        >
+          <BaseIconButton class="bg-teal-500" ring="ring-teal-500/50">
+            <SVGArrowLeft />
+          </BaseIconButton>
+        </router-link>
+
         <AppLangCurrency />
       </div>
     </div>
