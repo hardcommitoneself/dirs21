@@ -3,7 +3,7 @@ const { faker } = require("@faker-js/faker");
 
 const randomDish = () => {
   return {
-    id: uuid(),
+    _id: uuid(),
     name: faker.commerce.productName(),
     description: faker.commerce.productDescription(),
     price: parseFloat(faker.commerce.price()),
