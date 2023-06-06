@@ -1,7 +1,7 @@
 <template>
   <!-- header -->
   <header
-    class="flex items-center justify-between h-20 px-10 border-b max-w-screen-2xl"
+    class="flex items-center justify-between h-20 px-10 mx-auto border-b max-w-screen-2xl"
   >
     <!-- logo -->
     <AppLogo />

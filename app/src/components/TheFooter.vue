@@ -1,7 +1,7 @@
 <template>
   <!-- footer -->
   <footer
-    class="fixed bottom-0 flex items-center justify-between w-screen h-12 px-10 text-sm border-t max-w-screen-2xl"
+    class="fixed bottom-0 flex items-center justify-between w-screen h-12 px-10 mx-auto text-sm border-t max-w-screen-2xl"
   >
     <AppCopyright />
 
