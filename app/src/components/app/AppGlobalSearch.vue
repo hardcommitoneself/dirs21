@@ -1,3 +1,7 @@
+<script setup>
+import SVGSearch from "@/components/svg/SVGSearch.vue"
+</script>
+
 <template>
   <div
     class="relative flex items-center h-12 border min-w-[384px] rounded-full shadow pl-4 pr-12"
@@ -19,7 +23,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import SVGSearch from "../svg/SVGSearch.vue"
-</script>

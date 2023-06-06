@@ -1,3 +1,9 @@
+<script setup>
+import AppLogo from "@/components/app/AppLogo.vue"
+import AppGlobalSearch from "@/components/app/AppGlobalSearch.vue"
+import AppLangCurrency from "@/components/app/AppLangCurrency.vue"
+</script>
+
 <template>
   <!-- header -->
   <header
@@ -15,9 +21,3 @@
     </div>
   </header>
 </template>
-
-<script setup>
-import AppLogo from "./app/AppLogo.vue"
-import AppGlobalSearch from "./app/AppGlobalSearch.vue"
-import AppLangCurrency from "./app/AppLangCurrency.vue"
-</script>

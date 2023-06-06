@@ -1,8 +1,8 @@
 <script setup>
-import BaseIconButton from "./BaseIconButton.vue"
-import SVGXMark from "../svg/SVGXMark.vue"
+import SVGXMark from "@/components/svg/SVGXMark.vue"
+import BaseIconButton from "@/components/base/BaseIconButton.vue"
 
-const props = defineProps(["title", "open"])
+const props = defineProps(["title", "open", "closeModal"])
 </script>
 
 <template>
@@ -16,12 +16,16 @@ const props = defineProps(["title", "open"])
       <!-- header -->
       <div class="flex items-center justify-between h-16 px-5 border-b">
         <!-- close icon -->
-        <BaseIconButton bg="bg-gray-100 text-black" ring="ring-gray-100/50">
+        <BaseIconButton
+          bg="bg-gray-100 text-black"
+          ring="ring-gray-100/50"
+          @click="closeModal()"
+        >
           <SVGXMark />
         </BaseIconButton>
 
         <!-- title -->
-        <span>{{ title }}</span>
+        <span class="text-lg">{{ title }}</span>
 
         <!-- space -->
         <span></span>

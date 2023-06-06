@@ -1,3 +1,8 @@
+<script setup>
+import AppCopyright from "@/components/app/AppCopyright.vue"
+import SVGGlobal from "@/components/svg/SVGGlobal.vue"
+</script>
+
 <template>
   <!-- footer -->
   <footer class="fixed bottom-0 w-screen h-12 px-10 bg-white border-t">
@@ -17,8 +22,3 @@
     </div>
   </footer>
 </template>
-
-<script setup>
-import AppCopyright from "./app/AppCopyright.vue"
-import SVGGlobal from "./svg/SVGGlobal.vue"
-</script>

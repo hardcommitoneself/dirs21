@@ -1,9 +1,9 @@
 <script setup>
 import { storeToRefs } from "pinia"
-import BaseIconButton from "../base/BaseIconButton.vue"
-import SVGDelete from "../svg/SVGDelete.vue"
-import SVGEdit from "../svg/SVGEdit.vue"
-import { useAppStore, useDishStore } from "../../store"
+import { useAppStore, useDishStore } from "@/store"
+import BaseIconButton from "@/components/base/BaseIconButton.vue"
+import SVGDelete from "@/components/svg/SVGDelete.vue"
+import SVGEdit from "@/components/svg/SVGEdit.vue"
 
 const appStore = useAppStore()
 const dishStore = useDishStore()

@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from "vue"
 import { storeToRefs } from "pinia"
 import DishList from "@/components/dish/DishList.vue"
 import DishListItem from "@/components/dish/DishListItem.vue"
@@ -10,9 +9,7 @@ import { useDishStore } from "../../store"
 
 const dishStore = useDishStore()
 
-const { dishes, loading, currentDeleteDishId } = storeToRefs(dishStore)
-
-const openDeleteModal = computed(() => currentDeleteDishId.value !== null)
+const { dishes, loading, openDeleteModal } = storeToRefs(dishStore)
 </script>
 
 <template>
@@ -25,12 +22,14 @@ const openDeleteModal = computed(() => currentDeleteDishId.value !== null)
   </div>
 
   <!-- delete confirmation modal -->
-  <BaseModal title="Are you sure?" :open="openDeleteModal">
+  <BaseModal
+    title="Are you sure?"
+    :open="openDeleteModal"
+    :close-modal="dishStore.closeDeleteModal"
+  >
     <div class="flex items-center justify-center space-x-4">
       <BaseButton @click="dishStore.deleteDish()">Delete</BaseButton>
-      <BaseButton @click="dishStore.setCurrentDeleteDishId(null)"
-        >Cancel</BaseButton
-      >
+      <BaseButton @click="dishStore.closeDeleteModal()">Cancel</BaseButton>
     </div>
   </BaseModal>
 </template>

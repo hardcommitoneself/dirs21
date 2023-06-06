@@ -5,6 +5,7 @@ export const useDishStore = defineStore("dish", {
   state: () => ({
     dishes: [],
     currentDeleteDishId: null,
+    openDeleteModal: false,
     loading: false,
     error: null,
   }),
@@ -42,6 +43,7 @@ export const useDishStore = defineStore("dish", {
 
           this.dishes.splice(dishIndex, 1)
           this.currentDeleteDishId = null
+          this.openDeleteModal = false
         }
         this.loading = false
       } catch (error) {
@@ -54,6 +56,13 @@ export const useDishStore = defineStore("dish", {
      */
     setCurrentDeleteDishId(id) {
       this.currentDeleteDishId = id
+      this.openDeleteModal = true
+    },
+    /**
+     * Close delete modal
+     */
+    closeDeleteModal() {
+      this.openDeleteModal = false
     },
   },
 })
