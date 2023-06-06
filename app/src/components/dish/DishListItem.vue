@@ -3,9 +3,10 @@ import { storeToRefs } from "pinia"
 import BaseIconButton from "../base/BaseIconButton.vue"
 import SVGDelete from "../svg/SVGDelete.vue"
 import SVGEdit from "../svg/SVGEdit.vue"
-import { useAppStore } from "../../store"
+import { useAppStore, useDishStore } from "../../store"
 
 const appStore = useAppStore()
+const dishStore = useDishStore()
 
 const { currency } = storeToRefs(appStore)
 
@@ -32,7 +33,11 @@ const props = defineProps(["dish"])
           <SVGEdit />
         </BaseIconButton>
 
-        <BaseIconButton bg="bg-red-500" ring="ring-red-500/50">
+        <BaseIconButton
+          bg="bg-red-500"
+          ring="ring-red-500/50"
+          @click="dishStore.setCurrentDeleteDishId(dish._id)"
+        >
           <SVGDelete />
         </BaseIconButton>
       </div>

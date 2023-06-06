@@ -12,3 +12,16 @@ export const findAll = async () => {
     throw error
   }
 }
+
+/**
+ * Delete dish
+ */
+export const deleteOne = async (id) => {
+  try {
+    const response = await axios.delete(`/dishes/${id}`)
+
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}

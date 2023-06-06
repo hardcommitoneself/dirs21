@@ -1,9 +1,10 @@
 import { defineStore } from "pinia"
-import { findAll } from "@/services"
+import { findAll, deleteOne } from "@/services"
 
 export const useDishStore = defineStore("dish", {
   state: () => ({
     dishes: [],
+    currentDeleteDishId: null,
     loading: false,
     error: null,
   }),
@@ -24,6 +25,35 @@ export const useDishStore = defineStore("dish", {
         this.loading = false
         this.error = error
       }
+    },
+    /**
+     * Delete dish
+     */
+    async deleteDish() {
+      try {
+        this.loading = true
+
+        const response = await deleteOne(this.currentDeleteDishId)
+
+        if (response.message === "Dish deleted") {
+          const dishIndex = this.dishes.findIndex(
+            (dish) => dish._id === this.currentDeleteDishId
+          )
+
+          this.dishes.splice(dishIndex, 1)
+          this.currentDeleteDishId = null
+        }
+        this.loading = false
+      } catch (error) {
+        this.loading = false
+        this.error = error
+      }
+    },
+    /**
+     * Set current deletion dish id
+     */
+    setCurrentDeleteDishId(id) {
+      this.currentDeleteDishId = id
     },
   },
 })
