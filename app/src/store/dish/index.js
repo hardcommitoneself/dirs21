@@ -1,8 +1,9 @@
 import { defineStore } from "pinia"
-import { findAll, deleteOne } from "@/services"
+import { findAll, findOne, updateDish, deleteOne } from "@/services"
 
 export const useDishStore = defineStore("dish", {
   state: () => ({
+    dish: null,
     dishes: [],
     currentDeleteDishId: null,
     openDeleteModal: false,
@@ -23,6 +24,43 @@ export const useDishStore = defineStore("dish", {
         this.loading = false
       } catch (error) {
         this.dishes = []
+        this.loading = false
+        this.error = error
+      }
+    },
+    /**
+     * Get dish by id
+     */
+    async getDish(id) {
+      try {
+        this.loading = true
+
+        const dish = await findOne(id)
+
+        this.dish = dish
+        this.loading = false
+      } catch (error) {
+        this.dish = null
+        this.loading = false
+        this.error = error
+      }
+    },
+    /**
+     * Update dish
+     */
+    async updateDish(payload) {
+      try {
+        this.loading = true
+
+        const dish = await updateDish(payload)
+
+        const dishIndex = this.dishes.findIndex(
+          (dish) => dish._id === payload._id
+        )
+
+        this.dishes[dishIndex] = dish
+        this.loading = false
+      } catch (error) {
         this.loading = false
         this.error = error
       }

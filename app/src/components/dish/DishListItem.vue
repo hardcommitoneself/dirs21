@@ -29,9 +29,11 @@ const props = defineProps(["dish"])
       <div
         class="absolute top-0 left-0 flex items-center justify-center w-full h-full space-x-4 transition opacity-0 group-hover:opacity-100 group-hover:bg-black/50"
       >
-        <BaseIconButton bg="bg-green-500" ring="ring-green-500/50">
-          <SVGEdit />
-        </BaseIconButton>
+        <router-link :to="`/dishes/${dish._id}/edit`">
+          <BaseIconButton bg="bg-green-500" ring="ring-green-500/50">
+            <SVGEdit />
+          </BaseIconButton>
+        </router-link>
 
         <BaseIconButton
           bg="bg-red-500"
